@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 surahNumber -> {
                     String allAyaatsToDisplay = "";
                     for (int i = 0; i < myDataList.size(); i++) {
-                        if (myDataList.get(i).get("surah_number") == String.valueOf(surahNumber)) {
+
+                        if (myDataList.get(i).get("surah_number").equals(String.valueOf(surahNumber))) {
                             allAyaatsToDisplay = allAyaatsToDisplay + " " + myDataList.get(i).get("text");
                         }
                     }
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, ShowCompleteSurah.class);
                     intent.putExtra("data",allAyaatsToDisplay);
                     startActivity(intent);
-        });
+                    Log.d("size", String.valueOf(myDataList.size()));
+
+                });
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
